@@ -56,3 +56,6 @@ function getRandom(max, min){
 
 makeUsersArr()
 
+//module1-task2
+
+displayUsersPhotos(usersArr)
