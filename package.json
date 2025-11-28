@@ -1,13 +1,10 @@
 {
-  "name": "kekstagram",
-  "version": "23.0.0",
+  "name": "Gram",
+  "version": "1.0.0",
   "private": true,
-  "description": "Личный проект «Кекстаграм»",
+  "description": "Особистий проект",
   "repository": {
     "type": "git"
-  },
-  "bugs": {
-    "url": "https://github.com/htmlacademy-javascript/1681305-kekstagram-23/issues"
   },
   "devDependencies": {
     "browser-sync": "2.26.14",
