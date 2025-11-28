@@ -6,7 +6,6 @@
 // likes, число – кількість лайків, поставлених фотографії. Випадкове число – від 15 до 200.
 
 import {descriotionsArr, comments, names} from "./data.js";
-import {displayUsersPhotos} from "./keksogram_project/js/displayPhoto.js";
 
 let usersArr = []
 function makeUsersArr(){
