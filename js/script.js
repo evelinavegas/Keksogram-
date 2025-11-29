@@ -7,7 +7,7 @@
 
 import {descriotionsArr, comments, names} from "./data.js";
 import {displayUsersPhotos} from "./displayPhoto.js";
-import {fullSizeCreate} from "./full-sizePhoto.js";
+import {fullSizeCreate} from "./full-size_photos.js";
 
 
 let usersArr = []
