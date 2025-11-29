@@ -6,6 +6,9 @@
 // likes, число – кількість лайків, поставлених фотографії. Випадкове число – від 15 до 200.
 
 import {descriotionsArr, comments, names} from "./data.js";
+import {displayUsersPhotos} from "./displayPhoto.js";
+import {fullSizeCreate} from "./full-size_photos.js";
+
 
 let usersArr = []
 function makeUsersArr(){

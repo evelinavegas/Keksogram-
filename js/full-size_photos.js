@@ -70,6 +70,5 @@ function createCommentsPrewue(arr){
     })
 }
 
-// Close
 
 export {fullSizeCreate}
