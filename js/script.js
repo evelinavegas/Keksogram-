@@ -8,6 +8,7 @@
 import {descriotionsArr, comments, names} from "./data.js";
 import {displayUsersPhotos} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
+import {hashtagsValidation, uploudForm} from "./validation.js";
 
 
 let usersArr = []
@@ -66,6 +67,7 @@ displayUsersPhotos(usersArr)
 
 const bigPictureCancel= document.querySelector('.big-picture__cancel')
 const bigPicture = document.querySelector('.big-picture') 
+const pictureContainer = document.querySelector('.pictures')
 
 pictureContainer.addEventListener('click', e =>{
     e.preventDefault()
@@ -82,3 +84,20 @@ function close(element) {
         document.querySelector('body').classList.remove('modal-open')
     }
 }
+
+// module1-task4
+
+const uplaudSubmit = document.querySelector('#upload-submit')
+
+uplaudSubmit.addEventListener('click', e=>{
+    e.preventDefault()
+
+    let hashtags = document.querySelector('.text__hashtags')
+    
+    // hashtags validation
+    hashtagsValidation(hashtags.value, hashtags)    
+})
+
+// Close Form
+document.addEventListener('keydown', e => e.key == 'Escape' ? close(uploudForm): null)
+document.querySelector('.img-upload__cancel').addEventListener('click', e => close(uploudForm))
