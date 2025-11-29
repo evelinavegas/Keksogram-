@@ -10,7 +10,6 @@
 // використовуйте DocumentFragment.
 // Підключіть модуль до проекту.
 
-// const pictureContainer = document.querySelector('.pictures')
 const picture = document.querySelector('#picture')
 const pictureContainer = document.querySelector('.pictures')
 
@@ -31,4 +30,4 @@ function displayUsersPhotos (arr) {
 }
 
 
-export {displayUsersPhotos}
+export {displayUsersPhotos, pictureContainer}
