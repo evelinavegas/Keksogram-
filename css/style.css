@@ -344,18 +344,17 @@ main {
   content: "";
   position: absolute;
 
-  top: 32px;
+  top: 46px;
   left: 47px;
-
   width: 86px;
-  height: 114px;
+  height: 86px;
 
-  background-image: url("../img/upload-button.svg");
+  background-image: url(../img/upload-button.svg);
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
 
   -webkit-filter: drop-shadow(0 0 10px #943106);
-          filter: drop-shadow(0 0 10px #943106);
+  filter: drop-shadow(0 0 10px #943106);
 }
 
 .img-upload__label:hover::after,
