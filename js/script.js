@@ -55,3 +55,27 @@ function getRandom(max, min){
 
 makeUsersArr()
 
+//module1-task2
+
+displayUsersPhotos(usersArr)
+
+//module1-task3
+
+const bigPictureCancel= document.querySelector('.big-picture__cancel')
+const bigPicture = document.querySelector('.big-picture') 
+
+pictureContainer.addEventListener('click', e =>{
+    e.preventDefault()
+    fullSizeCreate(e.target, bigPicture, usersArr)
+})
+
+document.addEventListener('keydown', e => e.key == 'Escape' ? close(bigPicture) : null)
+bigPictureCancel.addEventListener('click', e => close(bigPicture))
+function close(element) {
+    if (document.activeElement.tagName == "INPUT" || document.activeElement.tagName == "TEXTAREA") {
+        return
+    } else {
+        element.classList.add('hidden')
+        document.querySelector('body').classList.remove('modal-open')
+    }
+}
