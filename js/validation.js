@@ -1,3 +1,5 @@
+import {slider} from './efects-slider.js'
+
 const uploudFileBtn = document.querySelector('.img-upload__label')
 const uploudForm = document.querySelector('.img-upload__overlay')
 
@@ -5,7 +7,7 @@ uploudFileBtn.addEventListener('click', e=>{
     e.preventDefault()
     uploudForm.classList.remove('hidden')
     document.querySelector('body').classList.add('modal-open')
-    // slider.classList.add('hidden') --noUiSlider
+    slider.classList.add('hidden')
 })
 
 // хеш-тег починається із символу # (решітка);
