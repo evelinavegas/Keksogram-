@@ -9,7 +9,7 @@ import {descriotionsArr, comments, names} from "./data.js";
 import {displayUsersPhotos} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
 import {hashtagsValidation, uploudForm} from "./validation.js";
-
+import  {createEffectSlider, effectsList} from './efects-slider.js'
 
 let usersArr = []
 function makeUsersArr(){
@@ -101,3 +101,12 @@ uplaudSubmit.addEventListener('click', e=>{
 // Close Form
 document.addEventListener('keydown', e => e.key == 'Escape' ? close(uploudForm): null)
 document.querySelector('.img-upload__cancel').addEventListener('click', e => close(uploudForm))
+
+// module1-task5
+
+effectsList.addEventListener('click', e=> {
+    e.preventDefault()
+    createEffectSlider(e)
+})
+
+
