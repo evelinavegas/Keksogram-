@@ -35,28 +35,46 @@
 // та клацнувши на значок закриття.
 // Підключіть модуль до проекту.
 
+const commentsLoaderBtn = document.querySelector('.comments-loader')
 
 function fullSizeCreate(target, element, arr){
+    commentsLoaderBtn.classList.remove('hidden')
     if(target.classList == 'picture__img'){
-        let indexArr = target.id.split('')
-        let arrElementTarget = arr[indexArr[indexArr.length-1]]
-        document.querySelector('.social__comment-count').classList.add('hidden')
+        let count = 5
+        let indexArr =target.id.replace(/\D/g,"")
+        let arrElementTarget = arr[indexArr]
+        const commentsLenght = arrElementTarget.comments.length
+
         document.querySelector('body').classList.add('modal-open')
         element.classList.remove('hidden')
 
         element.querySelector('.big-picture__img img').src= arrElementTarget.url
+        
         element.querySelector('.likes-count').textContent = arrElementTarget.likes
-        element.querySelector('.comments-count').textContent = arrElementTarget.comments.length
         element.querySelector('.social__caption').textContent = arrElementTarget.description
+        
+        if(commentsLenght > 5){
+            element.querySelector('.social__comment-count').textContent = `${count} з ${commentsLenght}` 
+        }else{
+            element.querySelector('.social__comment-count').classList.add('hidden')
+            commentsLoaderBtn.classList.add('hidden')
+        } 
 
-        createCommentsPrewue(arrElementTarget.comments)
+        createCommentsPrewue(arrElementTarget.comments, count)
+        commentsLoaderBtn.addEventListener('click', e=> {
+            e.preventDefault()
+            count = openComments(arrElementTarget.comments, count, commentsLoaderBtn)
+            element.querySelector('.social__comment-count').textContent = `${count} з ${commentsLenght}` 
+
+            createCommentsPrewue(arrElementTarget.comments, count)
+        })
     }
 }
-function createCommentsPrewue(arr){
+function createCommentsPrewue(arr, count){
     const socialComments = document.querySelector('.social__comments')
     socialComments.innerHTML =''
-    
-    arr.forEach(e=>{
+    let comments = arr.slice(0, count)
+    comments.forEach(e=>{
         let li = document.createElement('li')
         li.classList = 'social__comment'
         li.innerHTML = `
@@ -70,5 +88,13 @@ function createCommentsPrewue(arr){
     })
 }
 
-
+function openComments(arr, count, btn){
+    if(arr.length >= count + 5){
+        count+=5 
+    } else {
+        count = arr.length
+        btn.classList.add('hidden')
+    }
+    return count
+}
 export {fullSizeCreate}
