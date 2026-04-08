@@ -76,7 +76,6 @@ async function getUsers(){
 
 let usersArr = await getUsers()
 
-console.log(usersArr)
 
 //module1-task2
 
@@ -128,4 +127,6 @@ effectsList.addEventListener('click', e=> {
     createEffectSlider(e)
 })
 
+
+//  module1-task7
 
