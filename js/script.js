@@ -10,6 +10,7 @@ import {displayUsersPhotos} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
 import {hashtagsValidation, uploudForm} from "./validation.js";
 import  {createEffectSlider, effectsList} from './efects-slider.js'
+import { scalingImg, SIZE_RANG, scaleValue} from "./scaling.js";
 
 // let usersArr = []
 // function makeUsersArr(){
@@ -100,6 +101,7 @@ function close(element) {
     } else {
         element.classList.add('hidden')
         document.querySelector('body').classList.remove('modal-open')
+        scaleValue.value = '100%'
     }
 }
 
@@ -128,5 +130,22 @@ effectsList.addEventListener('click', e=> {
 })
 
 
-//  module1-task7
+//  module1-task8
+
+// uploudForm.classList.remove('hidden')
+
+const smallerBtn = document.querySelector('.scale__control--smaller')
+const biggerBtn = document.querySelector('.scale__control--bigger')
+
+smallerBtn.addEventListener('click', e=>{
+    e.preventDefault()
+    scalingImg(scaleValue.value.replace(/\D/g,""), SIZE_RANG, '-')
+})
+biggerBtn.addEventListener('click', e=>{
+    e.preventDefault()
+    scalingImg(scaleValue.value.replace(/\D/g,""), SIZE_RANG, '+')
+})
+// const uploudForm = document.querySelector('.img-upload__overlay')
+
+
 
