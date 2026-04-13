@@ -10,7 +10,7 @@ import {displayUsersPhotos} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
 import {hashtagsValidation, uploudForm} from "./validation.js";
 import  {createEffectSlider, effectsList} from './efects-slider.js'
-import { scalingImg, SIZE_RANG, scaleValue} from "./scaling.js";
+import { scalingImg, scaleValue} from "./scaling.js";
 
 // let usersArr = []
 // function makeUsersArr(){
