@@ -132,20 +132,18 @@ effectsList.addEventListener('click', e=> {
 
 //  module1-task8
 
-// uploudForm.classList.remove('hidden')
-
 const smallerBtn = document.querySelector('.scale__control--smaller')
 const biggerBtn = document.querySelector('.scale__control--bigger')
-
+let scaleResult = 0 // data for add server 
 smallerBtn.addEventListener('click', e=>{
     e.preventDefault()
-    scalingImg(scaleValue.value.replace(/\D/g,""), SIZE_RANG, '-')
+    scaleResult = scalingImg(scaleValue.value.replace(/\D/g,""), SIZE_RANG, '-')
 })
 biggerBtn.addEventListener('click', e=>{
     e.preventDefault()
-    scalingImg(scaleValue.value.replace(/\D/g,""), SIZE_RANG, '+')
+    scaleResult = scalingImg(scaleValue.value.replace(/\D/g,""), SIZE_RANG, '+')
 })
-// const uploudForm = document.querySelector('.img-upload__overlay')
 
+// style add
 
 
