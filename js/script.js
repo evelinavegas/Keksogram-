@@ -10,7 +10,7 @@ import {displayUsersPhotos} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
 import {hashtagsValidation, uploudForm} from "./validation.js";
 import  {createEffectSlider, effectsList} from './efects-slider.js'
-import { scalingImg, SIZE_RANG, scaleValue} from "./scaling.js";
+import { scalingImg, scaleValue} from "./scaling.js";
 
 // let usersArr = []
 // function makeUsersArr(){
@@ -135,15 +135,21 @@ effectsList.addEventListener('click', e=> {
 const smallerBtn = document.querySelector('.scale__control--smaller')
 const biggerBtn = document.querySelector('.scale__control--bigger')
 let scaleResult = 0 // data for add server 
+
+const SCALE_RANG = {
+    'step': 25,
+    'min': 25,
+    'max': 100,
+}
+
 smallerBtn.addEventListener('click', e=>{
     e.preventDefault()
-    scaleResult = scalingImg(scaleValue.value.replace(/\D/g,""), SIZE_RANG, '-')
+    scaleResult = scalingImg(scaleValue.value.replace(/\D/g,""), SCALE_RANG, '-')
 })
 biggerBtn.addEventListener('click', e=>{
     e.preventDefault()
-    scaleResult = scalingImg(scaleValue.value.replace(/\D/g,""), SIZE_RANG, '+')
+    scaleResult = scalingImg(scaleValue.value.replace(/\D/g,""), SCALE_RANG, '+')
 })
 
-// style add
 
 
