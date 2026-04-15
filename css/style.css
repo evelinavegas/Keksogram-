@@ -518,11 +518,11 @@ main {
   width: 600px;
   height: 600px;
 
-  background-color: #ffffff;
+  background-color: #333131;
 }
 
 .img-upload__preview img {
-  display: block;
+  display: block; 
   max-width: 600px;
   max-height: 600px;
 }

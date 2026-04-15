@@ -22,11 +22,11 @@ noUiSlider.create(slider,{
 })
 
 const efectsDataArr = {
-    chrome : { min: 0, max: 1, step: 0.1, filter: 'grayscale'},
-    sepia: { min: 0, max: 1, step: 0.1, filter: 'sepia'},
-    marvin: { min: 0, max: 100, step: 1, filter: 'invert'},
-    phobos: { min: 0, max: 3, step: 0.1, filter: 'blur'},
-    heat: { min: 1, max: 3, step: 0.1, filter: 'brightness'},
+    chrome : { min: 0, max: 1, step: 0.1, filter: 'grayscale', unit : ''},
+    sepia: { min: 0, max: 1, step: 0.1, filter: 'sepia', unit : ''},
+    marvin: { min: 0, max: 100, step: 1, filter: 'invert', unit : '%'},
+    phobos: { min: 0, max: 3, step: 0.1, filter: 'blur', unit : 'px'},
+    heat: { min: 1, max: 3, step: 0.1, filter: 'brightness', unit : ''},
 }
 
 function createEffectSlider(e){
@@ -39,10 +39,10 @@ function createEffectSlider(e){
     let targetEffect = e.target.dataset.uid
     let targetData = efectsDataArr[targetEffect]
 
-    targetEffect !== 'none' ?  createEffect( targetData.min, targetData.max, targetData.step, targetData.filter ) : slider.classList.add('hidden')
+    targetEffect !== 'none' ?  createEffect( targetData.min, targetData.max, targetData.step, targetData.filter, targetData.unit) : slider.classList.add('hidden')
 }
 
-function createEffect(minCount, maxCount, chengStep, filter){
+function createEffect(minCount, maxCount, chengStep, filter, unit){
     
     slider.classList.remove('hidden')
 
@@ -52,8 +52,8 @@ function createEffect(minCount, maxCount, chengStep, filter){
         step:chengStep,
         start:minCount
     })
-  
-    filter =='invert' ? slider.noUiSlider.on('change', values => imgPreview.style.filter = `${filter}(${values}%)`) : slider.noUiSlider.on('change', values => imgPreview.style.filter = `${filter}(${values})`)
+    slider.noUiSlider.on('change', values => imgPreview.style.filter = `${filter}(${values}${unit})`)
+
 }
 
 export{createEffectSlider, effectsList, slider}
