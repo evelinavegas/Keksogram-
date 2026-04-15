@@ -8,7 +8,7 @@
 // import {descriotionsArr, comments, names} from "./data.js";
 import {displayUsersPhotos} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
-import {hashtagsValidation, uploudForm} from "./validation.js";
+import {hashtagsValidation, uploudForm, imgPreview} from "./validation.js";
 import  {createEffectSlider, effectsList} from './efects-slider.js'
 import { scalingImg, scaleValue} from "./scaling.js";
 
@@ -105,6 +105,7 @@ function close(element) {
         element.classList.add('hidden')
         document.querySelector('body').classList.remove('modal-open')
         scaleValue.value = '100%'
+        imgPreview.style = 0
     }
 }
 
