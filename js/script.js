@@ -82,16 +82,19 @@ let usersArr = await getUsers()
 
 displayUsersPhotos(usersArr)
 
-//module1-task3
+// //module1-task3
 
 const bigPictureCancel= document.querySelector('.big-picture__cancel')
 const bigPicture = document.querySelector('.big-picture') 
-const pictureContainer = document.querySelector('.pictures')
+const pictureContainer = document.querySelectorAll('.picture')
 
-pictureContainer.addEventListener('click', e =>{
-    e.preventDefault()
-    fullSizeCreate(e.target, bigPicture, usersArr)
+pictureContainer.forEach(e=>{
+    e.addEventListener('click', e =>{
+        e.preventDefault()
+        fullSizeCreate(e.target, bigPicture, usersArr)
+    })
 })
+
 
 document.addEventListener('keydown', e => e.key == 'Escape' ? close(bigPicture) : null)
 bigPictureCancel.addEventListener('click', e => close(bigPicture))
@@ -105,7 +108,7 @@ function close(element) {
     }
 }
 
-// module1-task4
+// // module1-task4
 
 const uplaudSubmit = document.querySelector('#upload-submit')
 
@@ -130,7 +133,7 @@ effectsList.addEventListener('click', e=> {
 })
 
 
-//  module1-task8
+// //  module1-task8
 
 const smallerBtn = document.querySelector('.scale__control--smaller')
 const biggerBtn = document.querySelector('.scale__control--bigger')
@@ -150,6 +153,5 @@ biggerBtn.addEventListener('click', e=>{
     e.preventDefault()
     scaleResult = scalingImg(scaleValue.value.replace(/\D/g,""), SCALE_RANG, '+')
 })
-
 
 
