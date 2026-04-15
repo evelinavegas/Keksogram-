@@ -89,9 +89,17 @@ function createCommentsPrewue(arr, count){
 }
 
 function openComments(arr, count, btn){
-    if(arr.length >= count + 5){
-        count+=5 
-    } else {
+    commentsLoaderBtn.classList.add('hidden')
+
+    if(arr.length > count ){
+        if(arr.length-count > 5){
+            count+=5
+            commentsLoaderBtn.classList.remove('hidden')
+        } else {
+            count = count + (arr.length - count)
+
+        }
+    } else{
         count = arr.length
         btn.classList.add('hidden')
     }

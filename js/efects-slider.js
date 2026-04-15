@@ -43,6 +43,7 @@ function createEffectSlider(e){
 }
 
 function createEffect(minCount, maxCount, chengStep, filter){
+    
     slider.classList.remove('hidden')
 
     slider.noUiSlider.set(0)
