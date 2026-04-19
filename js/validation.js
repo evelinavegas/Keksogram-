@@ -4,15 +4,12 @@ const uploudFileBtn = document.querySelector('.img-upload__label')
 const uploudInput = document.querySelector('.img-upload__input')
 const uploudForm = document.querySelector('.img-upload__overlay')
 const imgPreview = document.querySelector('.img-upload__preview img')
+const textDescription = document.querySelector('.text__description')
 
-document.addEventListener('click',e=>{
-    console.log(e)
-})
 uploudInput.addEventListener('change', (e)=>{
     const file = e.target.files[0]
     if(!file) return
     const url = URL.createObjectURL(file)
-    console.log(url)
     imgPreview.src = url 
     if(url){
         uploudForm.classList.remove('hidden')
@@ -20,12 +17,6 @@ uploudInput.addEventListener('change', (e)=>{
             slider.classList.add('hidden')  
     }
 })
-
-// uploudFileBtn.addEventListener('click', e=>{
-//     e.preventDefault()
-    
-//     
-// })
 
 // хеш-тег починається із символу # (решітка);
 // рядок після ґрат має складатися з літер і чисел і не може містити прогалини, 
@@ -60,9 +51,17 @@ function hashtagsValidation (value, input){
         } else if(arr.length > uniqueArr.length){
             err = 'unique # only'
         }
-        err !== 0 ? input.setCustomValidity(err) : 0
+        err !== 0 ? input.setCustomValidity(err):0
         input.reportValidity()
     })
+    return err
 }
 
-export {hashtagsValidation, uploudForm, imgPreview}
+// description validation 
+textDescription.addEventListener('input', () => {
+    if(textDescription.value.length > 139){
+        textDescription.setCustomValidity('no more than 140 characters')
+        textDescription.reportValidity()
+    }
+})
+export {hashtagsValidation, uploudForm, imgPreview, textDescription}

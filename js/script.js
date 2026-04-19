@@ -8,7 +8,7 @@
 // import {descriotionsArr, comments, names} from "./data.js";
 import {displayUsersPhotos} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
-import {hashtagsValidation, uploudForm, imgPreview} from "./validation.js";
+import {hashtagsValidation, uploudForm, imgPreview, textDescription} from "./validation.js";
 import  {createEffectSlider, effectsList} from './efects-slider.js'
 import { scalingImg, scaleValue} from "./scaling.js";
 
@@ -67,7 +67,6 @@ async function getUsers(){
             throw new Error('Error server', response.status)
         }
         const usersArr = await response.json()
-        // console.log(usersArr)
         return usersArr
     } catch (error) {
         console.log('error !!!', error)
@@ -111,16 +110,15 @@ function close(element) {
 
 // // module1-task4
 
-const uplaudSubmit = document.querySelector('#upload-submit')
+const hashtags = document.querySelector('.text__hashtags')
+let hashtagsErr = 0
 
-uplaudSubmit.addEventListener('click', e=>{
-    e.preventDefault()
-
-    let hashtags = document.querySelector('.text__hashtags')
-    
-    // hashtags validation
-    hashtagsValidation(hashtags.value, hashtags)    
+hashtags.addEventListener('input', () => hashtags.setCustomValidity(''))
+hashtags.addEventListener('blur', ()=>{
+    hashtagsErr = 0
+    hashtagsErr = hashtagsValidation(hashtags.value, hashtags)  
 })
+
 
 // Close Form
 document.addEventListener('keydown', e => e.key == 'Escape' ? close(uploudForm): null)
@@ -155,4 +153,34 @@ biggerBtn.addEventListener('click', e=>{
     scaleResult = scalingImg(scaleValue.value.replace(/\D/g,""), SCALE_RANG, '+')
 })
 
+
+// senden form 
+
+const uplaudSubmit = document.querySelector('#upload-submit')
+
+// "id":1,"url":"photos/1.jpg",
+// "description":"Легкість у кожному русі",
+// "likes":118,
+// "comments":[{"id":58,"avatar":"img/avatar-1.svg","message":"Загалом все непогано. Але не всі.",
+// "name":"Марко"
+let objNewPhoto = {}
+
+uplaudSubmit.addEventListener('click', e=>{
+    e.preventDefault()
+
+    if(hashtagsErr === 0){
+        formSubmit(imgPreview.src, hashtags.value, textDescription.value, imgPreview.style.filter, imgPreview.style.transform)
+    } else {
+        alert('error')
+    }
+})
+
+
+function formSubmit(urlValue, hashtagsValue, descriptionValue, filterValue, scaleVal ){
+    objNewPhoto.url = `${urlValue}`
+    objNewPhoto.hashtags =`${hashtagsValue}`
+    objNewPhoto.description =`${descriptionValue}`
+    objNewPhoto.filter =`${filterValue}`
+    objNewPhoto.scaleVal =`${scaleVal}`
+}
 
