@@ -1,18 +1,4 @@
 
-function formSubmit(urlValue, hashtagsValue, descriptionValue, filterValue, scaleVal ){
-    let obj = {}
-   
-    obj.id = 0;
-    obj.url = `${urlValue}`;
-    obj.description = `${descriptionValue}`;
-    obj.likes = 0;
-    obj.comments = [];
-    obj.filter = `${filterValue}`;;
-    obj.scaleVal = `${scaleVal}`;
-    obj.hashtagsValue = `${hashtagsValue}`;
-
-    sendForm(obj)
-}
 
 async function sendForm(obj){
     try{
@@ -28,4 +14,4 @@ async function sendForm(obj){
     }
 }
  
-export {formSubmit}
+export {sendForm}
