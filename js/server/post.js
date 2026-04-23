@@ -42,7 +42,7 @@ function makeUsersArr(){
 
 function makeCommentsArr(){
     let commentsArr = []
-    let rand = getRandom(15)
+    let rand = getRandom(50)
 
     let arrId = []
     let uniqueId =[]
@@ -72,7 +72,7 @@ let dataArr= makeUsersArr()
 
 async function sendData(){
     try{
-        const response = await fetch('http://localhost:8080', {
+        const response = await fetch('http://localhost:8080/dataUsers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
