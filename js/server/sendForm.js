@@ -1,5 +1,5 @@
 
-
+import { errorMessageCreate } from "../form-sending.js"
 async function sendForm(obj){
     try{
         const response = await fetch('http://localhost:8080/gram', {
@@ -11,6 +11,7 @@ async function sendForm(obj){
         })
     } catch (error) {
         console.log('Error:', error)
+        errorMessageCreate()
     }
 }
  

@@ -9,7 +9,8 @@ const textDescription = document.querySelector('.text__description')
 uploudInput.addEventListener('change', (e)=>{
     const file = e.target.files[0]
     if(!file) return
-    const url = URL.createObjectURL(file)
+    const blob = new Blob([file], { type: file.type })
+    const url = URL.createObjectURL(blob)
     imgPreview.src = url 
     if(url){
         uploudForm.classList.remove('hidden')
