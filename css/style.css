@@ -846,6 +846,9 @@ main {
   margin: 0;
   margin-right: 15px;
 }
+.social__hashtags{
+  color: #383837;
+}
 
 .social__likes {
   margin: 0;
