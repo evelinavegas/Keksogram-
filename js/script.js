@@ -11,6 +11,7 @@ import {fullSizeCreate} from "./full-size_photos.js";
 import {hashtagsValidation, uploudForm, imgPreview, textDescription} from "./validation.js";
 import  {createEffectSlider, effectsList} from './efects-slider.js'
 import { scalingImg, scaleValue} from "./scaling.js";
+import { formSubmit } from "./server/sendForm.js";
 
 // let usersArr = []
 // function makeUsersArr(){
@@ -62,11 +63,12 @@ import { scalingImg, scaleValue} from "./scaling.js";
 
 async function getUsers(){
     try {
-        const response = await fetch('http://localhost:8080')
+        const response = await fetch('http://localhost:8080/dataUsers')
         if(!response.ok) {
             throw new Error('Error server', response.status)
         }
         const usersArr = await response.json()
+
         return usersArr
     } catch (error) {
         console.log('error !!!', error)
@@ -163,7 +165,6 @@ const uplaudSubmit = document.querySelector('#upload-submit')
 // "likes":118,
 // "comments":[{"id":58,"avatar":"img/avatar-1.svg","message":"Загалом все непогано. Але не всі.",
 // "name":"Марко"
-let objNewPhoto = {}
 
 uplaudSubmit.addEventListener('click', e=>{
     e.preventDefault()
@@ -175,12 +176,4 @@ uplaudSubmit.addEventListener('click', e=>{
     }
 })
 
-
-function formSubmit(urlValue, hashtagsValue, descriptionValue, filterValue, scaleVal ){
-    objNewPhoto.url = `${urlValue}`
-    objNewPhoto.hashtags =`${hashtagsValue}`
-    objNewPhoto.description =`${descriptionValue}`
-    objNewPhoto.filter =`${filterValue}`
-    objNewPhoto.scaleVal =`${scaleVal}`
-}
 
