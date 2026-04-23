@@ -20,6 +20,8 @@ const comments = [
     'Обличчя людей на фотці перекошені, ніби їх побивають. Як можна було зловити такий невдалий момент?',
 ]
 const names = ['Марко', 'Софія', 'Даніель', 'Аліса', 'Тимофій', 'Мія', 'Назар', 'Емма', 'Артем', 'Ліна', 'Ілля', 'Вікторія', 'Олексій', 'Даша', 'Кирило']
+const hashtagsArr = ['#sunsetvibes', '#dailyinspo','#urbanexplorer','#mindfulmoments', '#techlife', '#creativeflow', '#weekendmood', '#natureescape', '#foodlover', '#goodtimesahead', '#simplepleasures', '#dreambigdaily', '#travelstories', '#staycurious', '#digitalworld', '#happyplace', '#livelifefully', '#cozycorner', '#newadventures', '#photodaily',]
+
 let usersArr = []
 function makeUsersArr(){
     const ID_RANGE ={
@@ -27,17 +29,27 @@ function makeUsersArr(){
     }
     for (let i= ID_RANGE.min; i <=ID_RANGE.max; i++) {
         const LIKES_RANGE ={
-            min: 15, max: 200,
+            min: 15, max: 2000,
         }
         let rand = getRandom(descriotionsArr.length)
         let likes = getRandom(LIKES_RANGE.max, LIKES_RANGE.min)
 
         let userObj = {
-            'id': i, 'url': `photos/${i}.jpg`, 'description': descriotionsArr[rand], 'likes' : likes, 'comments' : makeCommentsArr(),
+            'id': i, 'url': `photos/${i}.jpg`, 'description': descriotionsArr[rand], 'likes' : likes, 'comments' : makeCommentsArr(), 'hashtags': makeHashtagsarr(),
         }
         usersArr.push(userObj)
     }
     return usersArr
+}
+
+function makeHashtagsarr(){
+    let arr = []
+    for(let i=0; i<getRandom(5); i++){
+        arr.push(hashtagsArr[getRandom(10)])
+    }
+    let uniqueArr=[...new Set(arr)]
+    return uniqueArr.length<=5 ? uniqueArr : uniqueArr.slice(0, 5)
+    
 }
 
 function makeCommentsArr(){

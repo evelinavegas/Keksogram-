@@ -52,6 +52,12 @@ function fullSizeCreate(target, element, arr){
         
         element.querySelector('.likes-count').textContent = arrElementTarget.likes
         element.querySelector('.social__caption').textContent = arrElementTarget.description
+        if(arrElementTarget.hashtags.length !=0){
+            element.querySelector('.social__hashtags').classList.remove('hidden')
+            element.querySelector('.social__hashtags').textContent = arrElementTarget.hashtags.join(' ')
+        } else{
+            element.querySelector('.social__hashtags').classList.add('hidden')
+        }
         
         if(commentsLenght > 5){
             element.querySelector('.social__comment-count').textContent = `${count} з ${commentsLenght}` 
