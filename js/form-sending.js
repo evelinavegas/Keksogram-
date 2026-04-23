@@ -36,8 +36,15 @@ successButton.addEventListener('click', e=>{
 })
 
 // error sending
+const errorBlock = document.querySelector('.error')
+const errorButton = document.querySelector('.error__button').addEventListener('click', e=> {
+    errorBlock.classList.add('hidden')
+})
 
 
+function errorMessageCreate() {
+    errorBlock.classList.remove('hidden')
+}
 
 
-export {sendingForm}
+export {sendingForm, errorMessageCreate}
