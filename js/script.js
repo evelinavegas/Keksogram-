@@ -8,10 +8,10 @@
 // import {descriotionsArr, comments, names} from "./data.js";
 import {displayUsersPhotos} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
-import {hashtagsValidation, uploudForm, imgPreview, textDescription} from "./validation.js";
+import {hashtagsValidation, uploudForm, imgPreview} from "./validation.js";
 import  {createEffectSlider, effectsList} from './efects-slider.js'
 import { scalingImg, scaleValue} from "./scaling.js";
-import { formSubmit } from "./server/sendForm.js";
+import { sendingForm } from "./form-sending.js";
 
 // let usersArr = []
 // function makeUsersArr(){
@@ -160,20 +160,6 @@ biggerBtn.addEventListener('click', e=>{
 
 const uplaudSubmit = document.querySelector('#upload-submit')
 
-// "id":1,"url":"photos/1.jpg",
-// "description":"Легкість у кожному русі",
-// "likes":118,
-// "comments":[{"id":58,"avatar":"img/avatar-1.svg","message":"Загалом все непогано. Але не всі.",
-// "name":"Марко"
-
-uplaudSubmit.addEventListener('click', e=>{
-    e.preventDefault()
-
-    if(hashtagsErr === 0){
-        formSubmit(imgPreview.src, hashtags.value, textDescription.value, imgPreview.style.filter, imgPreview.style.transform)
-    } else {
-        alert('error')
-    }
-})
+uplaudSubmit.addEventListener('click', e=> sendingForm(hashtagsErr, hashtags))
 
 
