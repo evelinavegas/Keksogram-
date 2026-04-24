@@ -13,9 +13,13 @@
 const picture = document.querySelector('#picture')
 const pictureContainer = document.querySelector('.pictures')
 
+const start = document.createComment('fragment-start')
+const end = document.createComment('fragment-end')
+
 const fragment =new DocumentFragment()
 
 function displayUsersPhotos (arr) {
+    fragment.appendChild(start)
     arr.forEach(e=>{
         const cloneElement = picture.content.cloneNode(true);
     
@@ -25,9 +29,11 @@ function displayUsersPhotos (arr) {
         cloneElement.querySelector('.picture__comments').textContent = e.comments.length
         fragment.appendChild(cloneElement)
     })
+    fragment.appendChild(end)
+
     pictureContainer.appendChild(fragment)
 
 }
 
 
-export {displayUsersPhotos, pictureContainer}
+export {displayUsersPhotos, pictureContainer, start, end}

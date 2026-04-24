@@ -6,12 +6,13 @@
 // likes, число – кількість лайків, поставлених фотографії. Випадкове число – від 15 до 200.
 
 // import {descriotionsArr, comments, names} from "./data.js";
-import {displayUsersPhotos} from "./displayPhoto.js";
+import {displayUsersPhotos,} from "./displayPhoto.js";
 import {fullSizeCreate} from "./full-size_photos.js";
 import {hashtagsValidation, uploudForm, imgPreview} from "./validation.js";
 import  {createEffectSlider, effectsList} from './efects-slider.js'
 import { scalingImg, scaleValue} from "./scaling.js";
 import { sendingForm } from "./form-sending.js";
+import { filtersPostCreate } from "./filters-data-arr.js";
 
 async function getUsers(){
     try {
@@ -108,11 +109,19 @@ biggerBtn.addEventListener('click', e=>{
 })
 
 
-// senden form 
+// senden form module1-task9
 
 const uplaudSubmit = document.querySelector('#upload-submit')
 
 uplaudSubmit.addEventListener('click', e=> sendingForm(hashtagsErr, hashtags))
 
+// filters posts module1-task10
 
-console.log(usersArr)
+const postsFilters = document.querySelector('.img-filters')
+usersArr.lenght!= 0 ? postsFilters.classList.remove('img-filters--inactive') : null
+
+postsFilters.addEventListener('click', e=>{
+    e.preventDefault()
+    filtersPostCreate(e, usersArr,)
+})
+
